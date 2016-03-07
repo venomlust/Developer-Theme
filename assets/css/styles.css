@@ -1,4 +1,4 @@
-/*   
+/*
  * Template Name: Developer - Responsive Website Template for Developers
  * Version: 1.5
  * Author: Xiaoying Riley
@@ -10,7 +10,7 @@
 body {
   font-family: 'Lato', arial, sans-serif;
   color: #434343;
-  background: #DAE3E7;
+  background: #e9eaed;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -118,7 +118,7 @@ iframe {
 .header {
   padding: 30px 0;
   background: #f5f5f5;
-  border-top: 10px solid #778492;
+  border-top: 10px solid #3498DB;
 }
 .header .btn {
   margin-top: 60px;
@@ -126,6 +126,8 @@ iframe {
 }
 .header .profile-image {
   margin-right: 30px;
+  max-width: 180px;
+  max-height: 180px;
 }
 .header .profile-content .name {
   color: #49515a;
@@ -171,6 +173,7 @@ iframe {
 }
 .section {
   margin-bottom: 30px;
+  border-bottom: 1px solid #BDC3C7;
 }
 .section .section-inner {
   background: #fff;
@@ -381,7 +384,7 @@ iframe {
 }
 .skills .skillset .level-bar-inner {
   height: 15px;
-  background: #66cb8c;
+  background: #59ABE3;
 }
 /* Testimonials section */
 .testimonials .item {
