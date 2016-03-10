@@ -1,3 +1,5 @@
+var debug = true;
+
 jQuery(document).ready(function($) {
 
 
@@ -31,25 +33,25 @@ jQuery(document).ready(function($) {
         "http://feeds.feedburner.com/TechCrunch/startups",
 
         {
-        // how many entries do you want?
-        // default: 4
-        // valid values: any integer
-        limit: 3,
+            // how many entries do you want?
+            // default: 4
+            // valid values: any integer
+            limit: 3,
 
-        // the effect, which is used to let the entries appear
-        // default: 'show'
-        // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
-        effect: 'slideFastSynced',
+            // the effect, which is used to let the entries appear
+            // default: 'show'
+            // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
+            effect: 'slideFastSynced',
 
-        // outer template for the html transformation
-        // default: "<ul>{entries}</ul>"
-        // valid values: any string
-        layoutTemplate: "<div class='item'>{entries}</div>",
+            // outer template for the html transformation
+            // default: "<ul>{entries}</ul>"
+            // valid values: any string
+            layoutTemplate: "<div class='item'>{entries}</div>",
 
-        // inner template for each entry
-        // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
-        // valid values: any string
-        entryTemplate: '<h3 class="title"><a href="{url}" target="_blank">{title}</a></h3><div><p>{shortBodyPlain}</p><a class="more-link" href="{url}" target="_blank"><i class="fa fa-external-link"></i>Read more</a></div>'
+            // inner template for each entry
+            // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
+            // valid values: any string
+            entryTemplate: '<h3 class="title"><a href="{url}" target="_blank">{title}</a></h3><div><p>{shortBodyPlain}</p><a class="more-link" href="{url}" target="_blank"><i class="fa fa-external-link"></i>Read more</a></div>'
 
         }
     );
@@ -59,7 +61,41 @@ jQuery(document).ready(function($) {
 
 
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
-    GitHubActivity.feed({ username: "venomlust", selector: "#ghfeed" });
+    GitHubActivity.feed({
+        username: "venomlust",
+        selector: "#ghfeed"
+    });
 
 
+});
+
+$('#cvModal').on('shown.bs.modal', function() {
+    PDFJS.getDocument('assets/pdf/LucasBertollo.pdf').then(function(pdf) {
+        pdf.getPage(1).then(function(page) {
+            
+            var holderWidth = document.getElementById('pdfHolder').clientWidth;
+            
+            if(debug) console.log(holderWidth);
+            
+            var viewport = page.getViewport(1);
+            
+            var scale = holderWidth / viewport.width;
+            
+            var scaledViewport = page.getViewport(scale);
+            
+            var canvas = document.getElementById('pdfView');
+            var context = canvas.getContext('2d');
+            
+            
+            
+            canvas.height = scaledViewport.height;
+            canvas.width = scaledViewport.width;
+
+            var renderContext = {
+                canvasContext: context,
+                viewport: scaledViewport
+            };
+            page.render(renderContext);
+        });
+    });
 });
