@@ -1,0 +1,113 @@
+body {
+  overflow: scroll;
+  font-family: 'Trebuchet MS';
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#star{
+    position:absolute;
+    top:20px;
+    right:30px;
+}
+
+#first{
+  height: 760px;
+  background-image: url('https://preview.c9users.io/venomlust/teste-area/assets/images/cube/bg.png');
+  background-size: contain;
+     color: white
+}
+
+h1, h3{
+    text-transform: uppercase;
+}
+
+#top{
+      list-style-type: none;
+      padding-left: 0;
+      max-width: 200px;
+      min-width: 200px;
+}
+
+#top li{
+  font-size: 20px;
+  height: 70px;
+  margin-bottom: 5px;
+  background-color: #67809F;
+  text-align: center;
+  transition: background-color 0.5s ease;
+}
+
+#top  li:hover{
+      background-color: #34495E;
+      cursor: pointer;
+}
+
+#top li p{
+    text-transform: uppercase;
+    height:70px;
+    width: 200px;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+}
+hr{
+    border-top: 3px dashed white;
+}
+
+.bar{
+    height:200px;
+    background-color: #34495E
+
+}
+
+#two{
+    color:white;
+}
+
+#two-inner{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color:#34495E;
+    text-align: center;
+}
+
+#three{
+    color:white;
+}
+
+#three-inner{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#download{
+    text-align: center;
+}
+
+#download a{
+                background: grey;
+                width: 200px;
+                height: 200px;
+                display: inline-block;
+                border-radius: 50%;
+                color: #fff;
+                text-align: center;
+}
+#download .fa{
+    font-size: 100px;
+    padding-top: 40px;
+}
+#download ul li{
+    background-color: white;
+}
+@media screen and (max-width: 1280px) {
+    #first{
+        background-size: 100%;
+          background-repeat: no-repeat;
+    }
+}

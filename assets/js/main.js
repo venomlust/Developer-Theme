@@ -70,10 +70,18 @@ jQuery(document).ready(function($) {
 });
 
 $('#cvModal').on('shown.bs.modal', function() {
+
+    var holder = document.getElementById('pdfHolder');
+    var spinner = new Spinner().spin(holder);
+
     PDFJS.getDocument('assets/pdf/LucasBertollo.pdf').then(function(pdf) {
         pdf.getPage(1).then(function(page) {
             
+            spinner.stop();
+            
             var holderWidth = document.getElementById('pdfHolder').clientWidth;
+            
+            console.log('starting pdf');
             
             if(debug) console.log(holderWidth);
             
@@ -86,8 +94,6 @@ $('#cvModal').on('shown.bs.modal', function() {
             var canvas = document.getElementById('pdfView');
             var context = canvas.getContext('2d');
             
-            
-            
             canvas.height = scaledViewport.height;
             canvas.width = scaledViewport.width;
 
@@ -95,7 +101,9 @@ $('#cvModal').on('shown.bs.modal', function() {
                 canvasContext: context,
                 viewport: scaledViewport
             };
+            
             page.render(renderContext);
         });
+
     });
 });
